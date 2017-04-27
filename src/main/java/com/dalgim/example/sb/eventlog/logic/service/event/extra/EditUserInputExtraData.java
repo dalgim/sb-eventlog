@@ -1,10 +1,11 @@
-package com.dalgim.example.sb.eventlog.logic.service.event.extradata;
+package com.dalgim.example.sb.eventlog.logic.service.event.extra;
 
 import com.dalgim.example.sb.eventlog.dto.UserDTO;
 import com.dalgim.example.sb.eventlog.logic.service.event.EventExtraDataStrategy;
 import com.dalgim.example.sb.eventlog.model.event.EventExtraData;
+import com.google.common.base.Preconditions;
+import com.google.common.collect.Maps;
 import org.springframework.stereotype.Component;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -15,8 +16,10 @@ public class EditUserInputExtraData implements EventExtraDataStrategy<UserDTO> {
 
     @Override
     public Map<EventExtraData, String> createExtraData(UserDTO input) {
-        Map<EventExtraData, String> extraDataStringMap = new HashMap<>();
-        extraDataStringMap.put(EventExtraData.NAME, input.getFirstname());
+        Preconditions.checkNotNull(input, "UserDTO cannot be null.");
+
+        Map<EventExtraData, String> extraDataStringMap = Maps.newHashMap();
+        extraDataStringMap.put(EventExtraData.NAME, input.getFirstName());
         return extraDataStringMap;
     }
 }

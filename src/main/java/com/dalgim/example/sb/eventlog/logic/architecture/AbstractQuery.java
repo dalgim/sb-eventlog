@@ -1,4 +1,4 @@
-package com.dalgim.example.sb.eventlog.logic;
+package com.dalgim.example.sb.eventlog.logic.architecture;
 
 import com.dalgim.example.sb.eventlog.logic.service.event.EventExtraDataStrategy;
 import com.dalgim.example.sb.eventlog.logic.service.event.EventLogger;
@@ -11,16 +11,6 @@ public abstract class AbstractQuery<O> {
 
     private EventLogger eventLogger;
     private EventExtraDataStrategy<O> extraDataStrategyOutput;
-
-    @Autowired(required = false)
-    public void setExtraDataStrategyOutput(EventExtraDataStrategy<O> extraDataStrategyOutput) {
-        this.extraDataStrategyOutput = extraDataStrategyOutput;
-    }
-
-    @Autowired
-    public void setEventLogger(EventLogger eventLogger) {
-        this.eventLogger = eventLogger;
-    }
 
     protected abstract O logic();
 
@@ -35,4 +25,15 @@ public abstract class AbstractQuery<O> {
             throw e;
         }
     }
+
+    @Autowired(required = false)
+    public void setExtraDataStrategyOutput(EventExtraDataStrategy<O> extraDataStrategyOutput) {
+        this.extraDataStrategyOutput = extraDataStrategyOutput;
+    }
+
+    @Autowired
+    public void setEventLogger(EventLogger eventLogger) {
+        this.eventLogger = eventLogger;
+    }
+
 }

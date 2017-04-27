@@ -12,5 +12,5 @@ public class User {
 
     private Long id;
     private String login;
-    private String firstname;
+    private String firstName;
 }

@@ -4,13 +4,11 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * @author Mateusz Dalgiewicz on 27.04.17.
+ * Created by Mateusz Dalgiewicz on 27.04.2017.
  */
 @Getter
 @Setter
-public class UserDTO {
+public class DeleteUserDTO {
 
     private Long id;
-    private String login;
-    private String firstName;
 }

@@ -1,4 +1,4 @@
-package com.dalgim.example.sb.eventlog.logic;
+package com.dalgim.example.sb.eventlog.logic.architecture;
 
 import com.dalgim.example.sb.eventlog.logic.service.event.EventExtraDataStrategy;
 import com.dalgim.example.sb.eventlog.logic.service.event.EventLogger;
@@ -7,26 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 /**
  * @author Mateusz Dalgiewicz on 27.04.17.
  */
-public abstract class AbstractFilteredQuery<O, I> {
+public abstract class AbstractParamQuery<O, I> {
 
     private EventLogger eventLogger;
     private EventExtraDataStrategy<I> extraDataStrategyInput;
     private EventExtraDataStrategy<O> extraDataStrategyOutput;
-
-    @Autowired
-    public void setEventLogger(EventLogger eventLogger) {
-        this.eventLogger = eventLogger;
-    }
-
-    @Autowired(required = false)
-    public void setExtraDataStrategyInput(EventExtraDataStrategy<I> extraDataStrategyInput) {
-        this.extraDataStrategyInput = extraDataStrategyInput;
-    }
-
-    @Autowired(required = false)
-    public void setExtraDataStrategyOutput(EventExtraDataStrategy<O> extraDataStrategyOutput) {
-        this.extraDataStrategyOutput = extraDataStrategyOutput;
-    }
 
     protected abstract O logic(I input);
 
@@ -41,5 +26,20 @@ public abstract class AbstractFilteredQuery<O, I> {
             throw e;
         }
 
+    }
+
+    @Autowired
+    public void setEventLogger(EventLogger eventLogger) {
+        this.eventLogger = eventLogger;
+    }
+
+    @Autowired(required = false)
+    public void setExtraDataStrategyInput(EventExtraDataStrategy<I> extraDataStrategyInput) {
+        this.extraDataStrategyInput = extraDataStrategyInput;
+    }
+
+    @Autowired(required = false)
+    public void setExtraDataStrategyOutput(EventExtraDataStrategy<O> extraDataStrategyOutput) {
+        this.extraDataStrategyOutput = extraDataStrategyOutput;
     }
 }

@@ -1,7 +1,6 @@
 package com.dalgim.example.sb.eventlog.logic.service.event;
 
 import com.dalgim.example.sb.eventlog.model.event.EventExtraData;
-
 import java.util.Map;
 
 /**

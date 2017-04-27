@@ -8,6 +8,8 @@ import com.dalgim.example.sb.eventlog.model.User;
 public interface UserRepository {
 
     User findById(Long id);
+    User findByLogin(String login);
     User update(User user);
     void delete(User user);
+    void deleteById(Long id);
 }

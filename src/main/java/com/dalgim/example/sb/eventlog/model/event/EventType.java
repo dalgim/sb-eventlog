@@ -7,5 +7,7 @@ public enum EventType {
 
     OVERVIEW_ACCOUNT,
     EDIT_ACCOUNT,
-    DELETE_ACCOUNT;
+    DELETE_ACCOUNT,
+    EXCEPTION,
+    NOT_SPECIFIED;
 }
