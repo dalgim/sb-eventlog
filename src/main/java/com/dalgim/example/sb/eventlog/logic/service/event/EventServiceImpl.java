@@ -1,6 +1,6 @@
-package com.dalgim.example.sb.eventlog.logic.service.impl;
+package com.dalgim.example.sb.eventlog.logic.service.event;
 
-import com.dalgim.example.sb.eventlog.logic.service.EventService;
+import com.dalgim.example.sb.eventlog.logic.service.event.EventService;
 import com.dalgim.example.sb.eventlog.model.event.Event;
 import org.springframework.stereotype.Service;
 

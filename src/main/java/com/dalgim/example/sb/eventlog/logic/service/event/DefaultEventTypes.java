@@ -1,4 +1,4 @@
-package com.dalgim.example.sb.eventlog.logic.service;
+package com.dalgim.example.sb.eventlog.logic.service.event;
 
 import com.dalgim.example.sb.eventlog.logic.impl.DeleteUserCommand;
 import com.dalgim.example.sb.eventlog.logic.impl.EditUserFilteredQuery;

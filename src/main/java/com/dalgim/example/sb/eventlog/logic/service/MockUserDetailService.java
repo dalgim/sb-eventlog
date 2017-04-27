@@ -1,4 +1,4 @@
-package com.dalgim.example.sb.eventlog.logic.service.impl;
+package com.dalgim.example.sb.eventlog.logic.service;
 
 import com.dalgim.example.sb.eventlog.logic.service.UserDetailService;
 import org.springframework.stereotype.Service;

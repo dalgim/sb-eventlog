@@ -7,39 +7,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 /**
  * @author Mateusz Dalgiewicz on 27.04.17.
  */
-public abstract class AbstractFilteredQuery<O, I> {
+public abstract class AbstractCommand<I> {
 
     private EventLogger eventLogger;
     private EventExtraDataStrategy<I> extraDataStrategyInput;
-    private EventExtraDataStrategy<O> extraDataStrategyOutput;
-
-    @Autowired
-    public void setEventLogger(EventLogger eventLogger) {
-        this.eventLogger = eventLogger;
-    }
 
     @Autowired(required = false)
     public void setExtraDataStrategyInput(EventExtraDataStrategy<I> extraDataStrategyInput) {
         this.extraDataStrategyInput = extraDataStrategyInput;
     }
 
-    @Autowired(required = false)
-    public void setExtraDataStrategyOutput(EventExtraDataStrategy<O> extraDataStrategyOutput) {
-        this.extraDataStrategyOutput = extraDataStrategyOutput;
-    }
+    protected abstract void logic(I input);
 
-    protected abstract O logic(I input);
-
-    public O execute(I input) {
+    public void execute(I input) {
         try {
             eventLogger.beforeLogicEvent(getClass(), input, extraDataStrategyInput);
-            O output = logic(input);
-            eventLogger.afterLogicEvent(getClass(), output, extraDataStrategyOutput);
-            return output;
+            logic(input);
+            eventLogger.afterLogicEvent(getClass());
         } catch (Exception e) {
             eventLogger.exceptionEvent();
             throw e;
         }
 
     }
+
 }
